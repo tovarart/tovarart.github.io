@@ -459,6 +459,7 @@ nav#mainNav > ul > li > a span.more-menu:after .main {
   transform: translate(50%, 50%) scale(1) !important;
 }
 .main {
+  display: block;
   margin: 0 auto;
   padding: 60px;
   width: 100%;
