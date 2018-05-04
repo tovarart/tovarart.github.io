@@ -1,7 +1,253 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<!-- viewport meta to reset iPhone inital scale -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Front-End Learning | Preface</title>
+	<link rel="stylesheet" type="text/css" href="/include/css/lessons.css?123" />
+	<link href="https://fonts.googleapis.com/css?family=Cardo:700|Dosis:300,400" rel="stylesheet">
+	<script src="http://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="/include/js/lessons.js" ></script>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+<!-- START HEADER -->
+<header>
+	<button id="mobBtn" role="button" aria-expanded="false" type="button" aria-controls="mainNav" class="mobile-button">
+		<span></span>
+		<span></span>
+		<span></span>
+		Menu
+	</button>
+	<nav id="mainNav" >
+		<ul class="first-level" >
+			<li><a href="/" class="active first-level" ><span>preface</span></a></li>
+			<li>
+				<a href="/css/" class"" ><span>css</span></a>
+				<a href="#" class="more-link"  ><span class="more-menu"></span></a>
+				<ul class="sub-list second-level" >
+					<li><a href="index.html/positioning.html" ><span>positioning</span></a></li>
+					<li><a href="#" ><span>block</span></a></li>
+					<li><a href="#" ><span>margins and padding</span></a></li>
+					<li><a href="/css/flex/" ><span>flex</span></a></li>
+					<li><a href="#" ><span>grid</span></a></li>
+					<li><a href="#" ><span>css heirarchy</span></a></li>
+					<li><a href="#" ><span>:before &amp; :after</span></a></li>
+					<li><a href="#" ><span>transforming</span></a></li>
+					<li><a href="#" ><span>animations</span></a></li>
+				</ul>
+			</li>
+			<li><a href="#" class="active first-level" ><span>resposive web design</span></a></li>
+			<li>
+				<a href="#" ><span>html</span></a>
+				<a href="#" class="more-link" ><span class="more-menu" ></span></a>
+				<ul class="sub-list second-level" >
+					<li><a href="#" ><span>dom</span></a></li>
+					<li><a href="#" ><span>accessibility</span></a></li>
+					<li><a href="#" ><span>rendering</span></a></li>
+				</ul>
+			</li>
+			<li><a href="#" ><span>js</span></a></li>
+			<li><a href="#" ><span>includes</span></a></li>
+			<li><a href="#" ><span>preprocessors</span></a></li>
+			<li><a href="/react/" ><span>react</span></a></li>
+		</ul>
+	</nav>
+</header>
+<button id="elevatorBtn" class="elevator" href="#" >
+  Back to top
+</button>
+<!-- End Header -->
+<div id="screen" ></div>
+<main id="root" class="main" >
+	<div class="page-wrapper" >
+		<h1>Flex</h1>
+		<h2>Intro on CSS Flex</h2>
+		<p>There is so much to learn about Flex that it would be difficult (actually impossible) to explain all the conifigurations of how Flex can be used in one lesson. This lesson wil go over bringing elements inline in a row while occupying equal space; a common set up for desktop navigations.</p>
+		<p>If you see something wrong or vague, please <a href="mailto:art.tovar@wsp.com" >holla at me</a>. :)</p>
+		<h2>Setup</h2>
+		<p>First thing: you'll need at least one <strong>(flex) parent</strong> and <strong>child</strong>.</p>
+		<p>Think of flex as a box (the parent) that contains a single or multiple elements (child/children). The parent sets the rules and children follow the rules. Children can and sometimes do break the rules but for the sake of this lesson, we'll only look obedient children...</p>
+		<h3>Flex Parent Rules</h3>
+		<p>Consider the following setup:</p>
+		<section class="flex-section" >
+			<div id="firstFlex" class="flex-parent" >
+				<p class="label" >This is a flex parent: <code>100% (max-width: 600px) x 250px</code></p>
+				<div class="flex-child one" ><p>This is a single flex child.</p></div>
+			</div>
+		</section>
+		<p>To accomplish this set up, we start with declaring <code>flex</code> for the parent. This is done by assing the css rule: <code>display: flex</code> to the parent. This declares every <strong>immediate</strong> child to follow the flex rules. Keep in mind this only sets the rules for the immediate children, not nested elements. That is, if you have text, images, forms, etc., nested within the flex-child, <strong>the nested elements are not affected directly by the flex parent rules</strong>. However the contents can be used to determine the dimensions of the child. We'll go deeper in detail at a later time when we have a good understanding of the basics...</p>
+		<p>Next, we need to "tell" the flex-child to center vetically and horizontally. This is done by using <code>align-items</code> and <code>justify-content</code>.</p>
+		<p><code>align-items</code> will affect the <strong>vertical</strong> layout of the child elements and we'll use <code>justify-content</code> (in this case) to affect the <strong>horizontal</strong> layout. For each, we asign the parameter of <code>center</code>. So far, the parent CSS should like like the following:</p>
+		<code class="faux-css" >
+			.flex-parent {<br>
+			&nbsp;&nbsp;display: flex;<br>
+			&nbsp;&nbsp;justify-content: center;<br>
+			&nbsp;&nbsp;align-items: center;<br>
+			}
+		</code>
+		</p>This is where I find the beauty in flex; these same rules will apply to all the children elements. So if I have 1, or 3 or 5 elements, they all adhere to the same rules <i>without having to make changes to the css</i>, making responsive layouts much easier to create.</p>
+		<h3>To Wrap Or Not To Wrap?</h3>
+		<p>Here is another setup using the identical rules:</p>
+		<section class="flex-section" >
+			<div id="secondFlex" class="flex-parent" >
+				<div class="flex-child one" ><p>Norma</p></div>
+				<div class="flex-child two" ><p>Maria</p></div>
+				<div class="flex-child three" ><p>Sylvia</p></div>
+				<div class="flex-child four" ><p>Mark</p></div>
+			</div>
+		</section>
+		<p>The css has not changed from our original setup. We are still using the same flex parent rules and yet the child elements all behave as expected; they're centered neatly in a row and all in line <i>because they all still fit within the width of the parent container</i>. But what happens when one of the child's contents are too long? Well this is where we have to assign rules to the child elements..</p>
+		<p>The default behavior of the flex parent is to allow child elements to occupy space based on the child element's own initial dimensions (width and height) and then "wrap" to a next line <i>if</i> it outgrows the space. This behavior isnt and issue for child elements that "fit" but for elements like long menu options, you'll want to keep everything inline, or prevent the wrapping behavior by setting the rule: <code>flex-wrap: nowrap</code></p>
+		<p>Click on the toggle wrap button display the results:</p>
+		<section class="flex-section" >
+			<button id="changeWrap" class="flex-button" type="button" >flex-wrap: nowrap</button>
+			<div id="thirdFlex" class="flex-parent" >
+				<div class="flex-child one" ><p>Norma "Flyball" Tovar</p></div>
+				<div class="flex-child two" ><p>Frederick Austerlitz Von Setta Baccarin</p></div>
+				<div class="flex-child three" ><p>Virginia Katherine McMath De La Mancha-Smith</p></div>
+				<div class="flex-child four" ><p>Mark McGrath</p></div>
+			</div>
+		</section>
+		<div class="side-note right" >
+			<h4>Note: Be Aware Of Your Availble Space!</h4>
+			<p>Nowrap doesn't "force" elements to stay within the flex parent's dimensions. If the flex children do not "fit", they could get placed outside the parent container. Keep in mind that many factors are used to determine the length of the child element such as flex-basis, padding, word-spacing, font-size, width, margin... the list goes on.</p>
+		</div>
+		<p>Now, you're css code should look like this:</p>
+		<code class="faux-css" >
+			.flex-parent {<br>
+			&nbsp;&nbsp;display: flex;<br>
+			&nbsp;&nbsp;flex-wrap: nowrap;<br>
+			&nbsp;&nbsp;justify-content: center;<br>
+			&nbsp;&nbsp;align-items: center;<br>
+			}
+		</code>
+		<p>With the child elements in line, it looks better but not perfect. While the <code>nowrap</code> rule positions the child elements to all share the same space along its axis, some occupy more space because of the nested content. How can we fix the layout so that each child occupies the same amount of space horizontally? And then how can we fix the layout so that each child has the same height?</p>
+		<h3>Growing and Shrinking - It All Starts Somewhere</h3>
+		<p>For the next steps, we'll take a look at the parent rules first...</p>
+		<p>Keep in mind the declared height of the parent is 80 view-widths but no higher than 300px. We know that all the elemnts should be the same height, even if some have to stretch. So to accomplish this, we look back at the <code>align-items</code> rule. To keep things simple, we'll hide the text for now...</p>
+		<p>If you recall, the rule <code>align-items</code> affects the vertical alignment of the child elements. We need them all to stretch to fill the height of the parent container. To do that, we change the rule <code>align-items: center</code> to <code>align-items: stretch</code>.</p>
+		<section class="flex-section" >
+			<button id="changeAlignItems" class="flex-button" type="button" >align-items: stretch</button>
+			<div id="fourthFlex" class="flex-parent" >
+				<div class="flex-child one" ><p>Norma "Flyball" Tovar</p></div>
+				<div class="flex-child two" ><p>Frederick Austerlitz Von Setta Baccarin</p></div>
+				<div class="flex-child three" ><p>Virginia Katherine McMath De La Mancha-Smith</p></div>
+				<div class="flex-child four" ><p>Mark McGrath</p></div>
+			</div>
+		</section>
+		<p>Cool. Ok so now that we have all the child elements occupying the same vertical space, what about giving each child an equal share of horizontal space? For this we look at <code>flex-grow</code>, <code>flex-shrink</code> and assign the base of the width using <code>flex-basis</code>.</p>
+		<h4>Flex-Grow</h4>
+		<p>For <code>flex-grow</code>, we can assign <code>0</code> (the default value) or a positive number. (We can also assign initial or inherit but we'll discuss those at a future time.)</p>
+		<p>You can think of <code>flex-grow</code> like asking the child element "How much do you want to grow?" Well for this instance, we want to allow growth <strong>if there is space available</strong> so, we'll assign this to <code>1</code>. If we did not want the child element(s) to grow, <code>flex-grow</code> would be 0.</p>
+		<h4>Flex-Shrink</h4>
+		<p><code>flex-shrink</code> works almost identical to <code>flex-grow</code> in that you assign <code>0</code> or a positive number. The difference is that instead of growing, you're telling the child to <i>shrink</i>.</p> For our instance, we will assign <code>1</code> (default value) to our child elements, making each of the elements to shrink by <code>1</code> <strong>if the need arises</strong>. This is important when the viewport shrinks down to mobile. If we leave our children to only grow, they would get kicked out of the parent container when space decreases. Assigning a positive shrinking number will instruct the children elements to shrink if needed.</p>
+		<p>This number is relative to each child. This means I can assign <code>1</code> to Frederick but <code>3</code> to Virginia. This would result in Virginia shrinking 3 times while Frederick would only shrink by 1.<p>
+		<h4>Flex-Basis</h4>
+		<p>This is your child element's initial size. Think of <code>flex-basis</code> as the child's starting dimensions. This could be a length unit, precentage of the parent container or <code>auto</code> (default value), which is equal to the <strong>length</strong> of flex item. If the the length is not specified, the contents will be used to determine the length.</p>
+		<p>For this instance, we'll assign a length of 100px to the <code>flex-basis</code>. Since we're forcing <strong>all the child elements to grow and shrink with the same parameters based on 100px</strong>, they will all occupy the same horizontal space; click on the button to show the results...</p>
+		<section class="flex-section" >
+			<button id="changeFlexChild" class="flex-button" type="button" >flex: 1 1 100px</button>
+			<div id="fifthFlex" class="flex-parent" >
+				<div class="flex-child one" ><p>Norma "Flyball" Tovar</p></div>
+				<div class="flex-child two" ><p>Frederick Austerlitz Von Setta Baccarin</p></div>
+				<div class="flex-child three" ><p>Virginia Katherine McMath De La Mancha-Smith</p></div>
+				<div class="flex-child four" ><p>Mark McGrath</p></div>
+			</div>
+		</section>
+		<p>So far, your code should reflect the following:</p>
+		<code class="faux-css" >
+			.flex-parent {<br>
+			&nbsp;&nbsp;display: flex;<br>
+			&nbsp;&nbsp;justify-content: center;<br>
+			&nbsp;&nbsp;align-items: center;<br>
+			&nbsp;&nbsp;flex-wrap: nowrap;<br>
+			&nbsp;&nbsp;align-items: stretch;<br>
+		}<br>
+			.flex-child {<br>
+			&nbsp;&nbsp;flex-grow: 1;<br>
+			&nbsp;&nbsp;flex-shrink: 1;<br>
+			&nbsp;&nbsp;flex-basis: 100px;<br>
+			}
+		</code>
+		<p>The <code>.flex-child</code> rules can be short-handed by:</p>
+		<code class="faux-css" >
+			.flex-child {<br>
+			&nbsp;&nbsp;flex-grow: 1 1 100px;<br>
+			}
+		</code>
+		<p>Now the last thing we need to do is vertically center the text...</p>
+		<p>There are a number of ways to accomplish this but for this tutorial we'll use flex get the job done.</p>
+		<h3>Centering Vertically and Horizontally</h3>
+		<p>Recall that a flex parent's rules <strong>effect the immediate nested element(s)</strong>. In the examples above, the flex parent is wrapped around flex child, which is then wrappeed around a <code>p</code> element; the flex parent rules only effect the flex child, not the paragraph elements. So to center the paragraph content vertically, we have to assign flex parent rules to each of the flex children, essentially creating parents of children.</p>
+		<section class="flex-section" >
+			<button id="changeChild" class="flex-button" type="button" >Child to Parent Flex</button>
+			<div id="sixthFlex" class="flex-parent" >
+				<div class="flex-child one" ><p>Norma "Flyball" Tovar</p></div>
+				<div class="flex-child two" ><p>Frederick Austerlitz Von Setta Baccarin</p></div>
+				<div class="flex-child three" ><p>Virginia Katherine McMath De La Mancha-Smith</p></div>
+				<div class="flex-child four" ><p>Mark McGrath</p></div>
+			</div>
+		</section>
+		<p>So now our CSS should look like the following:</p>
+		<code class="faux-css" >
+			.flex-parent {<br>
+			&nbsp;&nbsp;display: flex;<br>
+			&nbsp;&nbsp;justify-content: center;<br>
+			&nbsp;&nbsp;align-items: center;<br>
+			&nbsp;&nbsp;flex-wrap: nowrap;<br>
+			&nbsp;&nbsp;align-items: stretch;<br>
+			}<br>
+			.flex-child {<br>
+			/* Flex parent rules */<br>
+			&nbsp;&nbsp;<span class="blue-text" >display: flex;</span><br>
+			&nbsp;&nbsp;<span class="blue-text" >justify-content: center;</span><br>
+			&nbsp;&nbsp;<span class="blue-text" >align-items: center;</span><br>
+			/* Flex chiild rules */<br>
+			&nbsp;&nbsp;flex-grow: 1;<br>
+			&nbsp;&nbsp;flex-shrink: 1;<br>
+			&nbsp;&nbsp;flex-basis: 100px;<br>
+			}<br>
+			.flex-child p {<br>
+			...<br>
+			}
+		</code>
+		<h3>Reduse, Reuse, Recycle</h3>
+		<p>Notice that the parent rules in the <code>.flex-child</code>  class are the same as the <code>.flex-parent</code> class. So instead of writing new "parent" rules for the child elements, we can just add the ".flex-parent" class to each of the child elements, right? Let's just add that class to the child-element now and....</p>
+		<section class="flex-section" >
+			<div id="seventhFlex" class="flex-parent" >
+				<div class="flex-child one flex-parent" ><p>Norma "Flyball" Tovar</p></div>
+				<div class="flex-child two flex-parent" ><p>Frederick Austerlitz Von Setta Baccarin</p></div>
+				<div class="flex-child three flex-parent" ><p>Virginia Katherine McMath De La Mancha-Smith</p></div>
+				<div class="flex-child four flex-parent" ><p>Mark McGrath</p></div>
+			</div>
+			<figcaption>Child element background has been altered to show parent container</figcaption>
+		</section>
+		<div class="side-note right">
+			<h4>Note: Elements Get Kicked Off</h4>
+			<p>We discussed earlier:<br>
+				<i>"<code>Nowrap</code> doesn't "force" elements to stay within the flex parent's dimensions. If the flex children do not "fit", they could get placed outside the parent container."</i><br>
+				This is a perfect example of how additional styles can affect the layout of the child elements.
+			</p>
+		</div>
+		<p>Oh no! What happened?</p>
+		<p>CSS happened. Our original <code>.flex-parent</code>  class contained additional rules such as position, margin, width and height rules that also applied to the child elements when we applied the <code>.flex-parent</code> class. While it is encouraged to reuse css styles (is there a name for this?), my suggestion is to <strong>separate flex css</strong> from other styles. This can be done by creating a a class solely for flex layouts. For the example above, we'll create a separate <code>.new-flex-parent</code> class and another class called <code>.group</code> for anything other than flex. That will help when reusing the same flex styles without worrying about appliying additional, unwanted styles.</p>
+		<P>Let's do that by clicking on the button below and seeing the results:</P>
+		<section class="flex-section" >
+			<button id="clearFlex" class="flex-button" type="button" >Separate Flex</button>
+			<div id="huitFlex" class="flex-parent" >
+				<div class="flex-child one flex-parent" ><p>Norma "Flyball" Tovar</p></div>
+				<div class="flex-child two flex-parent" ><p>Frederick Austerlitz Von Setta Baccarin</p></div>
+				<div class="flex-child three flex-parent" ><p>Virginia Katherine McMath De La Mancha-Smith</p></div>
+				<div class="flex-child four flex-parent" ><p>Mark McGrath</p></div>
+			</div>
+		</section>
+	</div>
+</div>
+</main>
+<footer>
+
+</footer>
+<script type="text/javascript" src="/include/js/flex-lesson.js" ></script>
 </body>
 </html>
