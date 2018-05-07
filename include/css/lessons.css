@@ -104,7 +104,8 @@ section {
 }
 a {
   text-decoration: none;
-  color: #666;
+  color: #006fc1;
+  font-weight: 600;
   -webkit-transition: color 0.12s linear;
   transition: color 0.12s linear;
 }
