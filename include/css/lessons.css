@@ -104,7 +104,7 @@ section {
 }
 a {
   text-decoration: none;
-  color: #006fc1;
+  color: #c10000;
   font-weight: 600;
   -webkit-transition: color 0.12s linear;
   transition: color 0.12s linear;
@@ -561,9 +561,15 @@ nav#mainNav > ul > li > a span.more-menu:after .main {
   flex-basis: 100px;
 }
 #sixthFlex.child-to-parent .flex-child {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .flex-parent .label {
   position: absolute;
@@ -587,10 +593,14 @@ nav#mainNav > ul > li > a span.more-menu:after .main {
   background: rgba(255,255,255,.5);
 }
 .new-flex-parent > .new-flex-parent {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 .new-flex-parent .flex-child {
-  flex: 1 1 100px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1 1 100px;
+          flex: 1 1 100px;
 }
 .flex-button {
   margin: 16px auto;
